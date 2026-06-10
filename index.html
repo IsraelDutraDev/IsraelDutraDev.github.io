@@ -3,348 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VALORANT Store - VP Instantâneo</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Segredo Misterioso</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Montserrat',sans-serif;
-}
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+    }
 
-:root{
-    --primary:#ff4655;
-    --secondary:#0f1923;
-    --dark:#081018;
-    --white:#ffffff;
-    --gray:#cfd3d6;
-}
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:
+            radial-gradient(circle at center, #1b1b1b 0%, #050505 70%);
+        overflow:hidden;
+    }
 
-body{
-    background: linear-gradient(135deg,#081018,#0f1923);
-    color:white;
-    overflow-x:hidden;
-}
+    .container{
+        text-align:center;
+    }
 
-/* HEADER */
+    h1{
+        color:#bbb;
+        margin-bottom:30px;
+        letter-spacing:3px;
+        text-shadow:0 0 15px rgba(255,255,255,0.2);
+    }
 
-header{
-    position:fixed;
-    width:100%;
-    top:0;
-    z-index:1000;
-    backdrop-filter:blur(12px);
-    background:rgba(0,0,0,0.35);
-    border-bottom:1px solid rgba(255,255,255,.1);
-}
+    button{
+        padding:20px 50px;
+        font-size:1.4rem;
+        font-weight:bold;
+        border:none;
+        border-radius:999px;
+        cursor:pointer;
+        color:white;
+        background:linear-gradient(45deg,#ff0066,#ff3300);
+        box-shadow:
+            0 0 20px #ff0066,
+            0 0 40px #ff3300;
+        transition:0.3s;
+        animation:pulse 1.5s infinite;
+    }
 
-.nav{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+    button:hover{
+        transform:scale(1.08);
+    }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+    @keyframes pulse{
+        0%{transform:scale(1);}
+        50%{transform:scale(1.08);}
+        100%{transform:scale(1);}
+    }
 
-.logo img{
-    width:40px;
-}
+    .resultado{
+        display:none;
+        flex-direction:column;
+        align-items:center;
+        animation:aparecer 0.5s ease;
+    }
 
-.logo h2{
-    font-size:1.3rem;
-    letter-spacing:2px;
-}
+    .emoji{
+        font-size:12rem;
+        margin-bottom:20px;
+    }
 
-/* HERO */
+    .msg{
+        color:white;
+        font-size:2rem;
+        font-weight:bold;
+        text-shadow:0 0 10px #fff;
+    }
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 20px 50px;
-    background:
-    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),
-    url('https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt77db6c8b3f4f3eb4/65b056eb4a45d58eeb5e5a52/VALORANT_Ep8_KeyArt.jpg')
-    center/cover;
-}
-
-.hero-content{
-    max-width:800px;
-}
-
-.hero h1{
-    font-size:4rem;
-    margin-bottom:20px;
-    font-weight:800;
-    text-transform:uppercase;
-}
-
-.hero h1 span{
-    color:var(--primary);
-}
-
-.hero p{
-    font-size:1.2rem;
-    color:var(--gray);
-    margin-bottom:35px;
-}
-
-.btn{
-    display:inline-block;
-    padding:16px 35px;
-    background:var(--primary);
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:700;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 30px rgba(255,70,85,.4);
-}
-
-/* VP SECTION */
-
-.section{
-    max-width:1200px;
-    margin:auto;
-    padding:90px 20px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:2.5rem;
-    margin-bottom:50px;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:rgba(255,255,255,.05);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:35px;
-    text-align:center;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:var(--primary);
-}
-
-.vp{
-    font-size:2rem;
-    font-weight:800;
-    color:var(--primary);
-}
-
-.price{
-    font-size:2.5rem;
-    margin:20px 0;
-    font-weight:700;
-}
-
-.buy-btn{
-    display:block;
-    background:var(--primary);
-    color:white;
-    text-decoration:none;
-    padding:15px;
-    border-radius:12px;
-    font-weight:700;
-    transition:.3s;
-}
-
-.buy-btn:hover{
-    background:#ff5e6b;
-}
-
-/* BENEFITS */
-
-.benefits{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.benefit{
-    text-align:center;
-    padding:25px;
-}
-
-.benefit h3{
-    margin:15px 0;
-    color:var(--primary);
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:30px;
-    border-top:1px solid rgba(255,255,255,.1);
-    color:#aaa;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-.hero h1{
-    font-size:2.7rem;
-}
-
-.hero p{
-    font-size:1rem;
-}
-
-.section-title{
-    font-size:2rem;
-}
-
-}
+    @keyframes aparecer{
+        from{
+            opacity:0;
+            transform:scale(0.5);
+        }
+        to{
+            opacity:1;
+            transform:scale(1);
+        }
+    }
 </style>
 </head>
 <body>
 
-<header>
-    <div class="nav">
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Riot_Games_logo.png" alt="Riot Games">
-            <h2>RIOT STORE</h2>
-        </div>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="hero-content">
-        <h1>COMPRE <span>VALORANT POINTS</span></h1>
-        <p>
-            Receba seus VP instantaneamente e desbloqueie skins,
-            bundles e agentes exclusivos.
-        </p>
-
-        <a href="#vp" class="btn">
-            Comprar Agora
-        </a>
-    </div>
-</section>
-
-<section class="section" id="vp">
-
-    <h2 class="section-title">
-        Escolha seu Pacote
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="vp">475 VP</div>
-            <div class="price">R$ 14,90</div>
-            <a href="#" class="buy-btn">
-                Comprar
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="vp">1.000 VP</div>
-            <div class="price">R$ 29,90</div>
-            <a href="#" class="buy-btn">
-                Comprar
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="vp">2.050 VP</div>
-            <div class="price">R$ 59,90</div>
-            <a href="#" class="buy-btn">
-                Comprar
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="vp">3.650 VP</div>
-            <div class="price">R$ 99,90</div>
-            <a href="#" class="buy-btn">
-                Comprar
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="vp">5.350 VP</div>
-            <div class="price">R$ 149,90</div>
-            <a href="#" class="buy-btn">
-                Comprar
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="vp">11.000 VP</div>
-            <div class="price">R$ 299,90</div>
-            <a href="#" class="buy-btn">
-                Comprar
-            </a>
-        </div>
-
+<div class="container">
+    <div id="inicio">
+        <h1>VOCÊ TEM CERTEZA QUE QUER VER?</h1>
+        <button onclick="revelar()">CLIQUE AQUI</button>
     </div>
 
-</section>
-
-<section class="section">
-
-    <h2 class="section-title">
-        Por que comprar conosco?
-    </h2>
-
-    <div class="benefits">
-
-        <div class="benefit">
-            <h3>⚡ Entrega Instantânea</h3>
-            <p>Receba seus VP em poucos minutos.</p>
+    <div class="resultado" id="resultado">
+        <div class="emoji">🖕</div>
+        <div class="msg">
+            nao acredito que tu caiu nisso KKKKKKKKK
         </div>
-
-        <div class="benefit">
-            <h3>🔒 Pagamento Seguro</h3>
-            <p>Proteção total para suas compras.</p>
-        </div>
-
-        <div class="benefit">
-            <h3>💎 Melhor Preço</h3>
-            <p>Pacotes competitivos e promoções.</p>
-        </div>
-
-        <div class="benefit">
-            <h3>🎮 Suporte Gamer</h3>
-            <p>Atendimento rápido para jogadores.</p>
-        </div>
-
     </div>
+</div>
 
-</section>
-
-<footer>
-    © 2026 Riot Store - Landing Page Demonstrativa para VALORANT.
-</footer>
+<script>
+function revelar(){
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("resultado").style.display = "flex";
+}
+</script>
 
 </body>
 </html>
