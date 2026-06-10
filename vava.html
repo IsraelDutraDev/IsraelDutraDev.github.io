@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT // STORE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=Orbitron:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --val-red: #ff4655;
+            --val-dark: #0f1923;
+            --val-white: #ece8e1;
+            --val-blue: #111c22;
+        }
+
+        body {
+            background-color: var(--val-dark);
+            color: var(--val-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-val { font-family: 'Teko', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
+
+        /* Background Estilizado */
+        .cyber-bg {
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 70, 85, 0.1) 0%, transparent 50%),
+                linear-gradient(rgba(15, 25, 35, 0.95), rgba(15, 25, 35, 0.95)),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        }
+
+        /* Botão Estilo Valorant (Corte Diagonal) */
+        .btn-valorant {
+            position: relative;
+            background-color: var(--val-red);
+            color: white;
+            padding: 12px 30px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-valorant:hover {
+            background-color: white;
+            color: var(--val-red);
+            transform: translateY(-2px);
+            filter: drop-shadow(0 0 10px rgba(255, 70, 85, 0.5));
+        }
+
+        /* Card de Moeda */
+        .currency-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .currency-card:hover {
+            border-color: var(--val-red);
+            background: rgba(255, 70, 85, 0.05);
+            transform: scale(1.02);
+        }
+
+        .currency-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 0;
+            background: var(--val-red);
+            transition: height 0.3s ease;
+        }
+
+        .currency-card:hover::before {
+            height: 100%;
+        }
+
+        /* Detalhe de Linha */
+        .red-line {
+            height: 2px;
+            background: var(--val-red);
+            width: 60px;
+        }
+
+        .glitch-text:hover {
+            text-shadow: 2px 0 #fff, -2px 0 #ff4655;
+        }
+    </style>
+</head>
+<body class="cyber-bg min-h-screen">
+
+    <!-- Header / Nav -->
+    <nav class="flex justify-between items-center px-6 py-4 border-b border-white/10 sticky top-0 z-50 bg-[#0f1923]/95 backdrop-blur-sm">
+        <div class="flex items-center gap-2">
+            <svg width="40" height="35" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 0H100L90 10L50 50L60 0Z" fill="#ff4655"/>
+                <path d="M40 0H0L10 10L50 50L40 0Z" fill="#ff4655"/>
+            </svg>
+            <span class="font-cyber text-xl font-black tracking-tighter">VALORANT <span class="text-[#ff4655]">POINTS</span></span>
+        </div>
+        <div class="hidden md:flex gap-6 font-val text-lg">
+            <a href="#" class="hover:text-[#ff4655] transition">Agentes</a>
+            <a href="#" class="hover:text-[#ff4655] transition text-[#ff4655]">Loja</a>
+            <a href="#" class="hover:text-[#ff4655] transition">Suporte</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-center items-center gap-4 mb-6">
+                <div class="red-line"></div>
+                <span class="font-val text-xl tracking-[0.3em] text-gray-400">Recarga Oficial</span>
+                <div class="red-line"></div>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-val font-bold italic leading-none mb-6 glitch-text">
+                ELEVE SEU <span class="text-[#ff4655]">ARSENAL</span>
+            </h1>
+            <p class="text-gray-400 max-w-xl mx-auto text-lg mb-10">
+                Adquira VP para desbloquear o Passe de Batalha, skins de armas exclusivas e itens premium na loja.
+            </p>
+            <a href="#store" class="btn-valorant text-2xl px-16 italic">VER OFERTAS</a>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="currency-card p-8 flex flex-col items-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-[#ff4655] to-transparent rounded-full blur-2xl absolute opacity-20"></div>
+                <img src="https://imgur.com/LIn1tM4.png" alt="VP" class="w-24 mb-6 relative z-10" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2091/2091665.png'">
+                <h3 class="font-val text-3xl font-bold">475 VP</h3>
+                <p class="text-xs text-gray-500 mb-6 uppercase tracking-widest">Iniciante</p>
+                <div class="text-2xl font-cyber mb-8">R$ 16,90</div>
+                <button class="btn-valorant w-full text-sm">COMPRAR</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="currency-card p-8 flex flex-col items-center">
+                <img src="https://imgur.com/LIn1tM4.png" alt="VP" class="w-24 mb-6 relative z-10" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2091/2091665.png'">
+                <h3 class="font-val text-3xl font-bold">1200 VP</h3>
+                <p class="text-xs text-gray-500 mb-6 uppercase tracking-widest">Essencial</p>
+                <div class="text-2xl font-cyber mb-8">R$ 39,90</div>
+                <button class="btn-valorant w-full text-sm">COMPRAR</button>
+            </div>
+
+            <!-- Card 3 (Destaque) -->
+            <div class="currency-card p-8 flex flex-col items-center border-[#ff4655] bg-[#ff4655]/5 transform scale-105 shadow-2xl">
+                <div class="absolute top-4 right-4 bg-[#ff4655] text-[10px] px-2 py-1 font-bold italic">POPULAR</div>
+                <img src="https://imgur.com/LIn1tM4.png" alt="VP" class="w-24 mb-6 relative z-10" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2091/2091665.png'">
+                <h3 class="font-val text-3xl font-bold">2500 VP</h3>
+                <p class="text-xs text-[#ff4655] mb-6 uppercase tracking-widest font-bold">Melhor Valor</p>
+                <div class="text-2xl font-cyber mb-8 text-[#ff4655]">R$ 79,90</div>
+                <button class="btn-valorant w-full text-sm shadow-lg shadow-[#ff4655]/20">COMPRAR</button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="currency-card p-8 flex flex-col items-center">
+                <img src="https://imgur.com/LIn1tM4.png" alt="VP" class="w-24 mb-6 relative z-10" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2091/2091665.png'">
+                <h3 class="font-val text-3xl font-bold">5000 VP</h3>
+                <p class="text-xs text-gray-500 mb-6 uppercase tracking-widest">Radiante</p>
+                <div class="text-2xl font-cyber mb-8">R$ 149,90</div>
+                <button class="btn-valorant w-full text-sm">COMPRAR</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-white/5 mt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 items-center">
+            <div class="text-center md:text-left">
+                <p class="font-cyber text-xs text-gray-600 mb-4 tracking-widest">RIOT GAMES // VALORANT PROJECT</p>
+                <p class="text-[10px] text-gray-700 leading-relaxed uppercase">
+                    Este é um site demonstrativo. Todas as marcas e imagens são propriedade da Riot Games. Não insira dados reais aqui.
+                </p>
+            </div>
+            <div class="flex justify-center gap-8">
+                <div class="w-10 h-10 border border-white/10 flex items-center justify-center hover:border-[#ff4655] transition cursor-pointer rotate-45 group">
+                    <span class="rotate-[-45deg] group-hover:text-[#ff4655]">IG</span>
+                </div>
+                <div class="w-10 h-10 border border-white/10 flex items-center justify-center hover:border-[#ff4655] transition cursor-pointer rotate-45 group">
+                    <span class="rotate-[-45deg] group-hover:text-[#ff4655]">TW</span>
+                </div>
+                <div class="w-10 h-10 border border-white/10 flex items-center justify-center hover:border-[#ff4655] transition cursor-pointer rotate-45 group">
+                    <span class="rotate-[-45deg] group-hover:text-[#ff4655]">YT</span>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <span class="font-val text-2xl opacity-20">DEFIY THE LIMITS</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
